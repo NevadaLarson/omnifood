@@ -221,7 +221,7 @@ input[type=button]:active {
 /*-------------------------------------------------------------------------*/
 
 header{
-    background-image:linear-gradient(rgba(0, 0, 0, 0.70),rgba(8, 0, 0, 0.70)),url(resources/css/images/hero-min.jpg);
+    background-image:url(resources/css/images/hero-min.jpg);
     /*background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));
     the first argument specifies the direction of transition..0deg meana vertically up and 90deg means left to right..... it can be st to any angle and thee is no limit to the no. of colors we can add*/
 
