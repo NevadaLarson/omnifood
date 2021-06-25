@@ -1,0 +1,701 @@
+/* ------------------------------------------------------------------------*/
+/* orange color = #e67e22 */
+/* ------------------------------------------------------------------------*/
+/* Basic setup*/
+/*-------------------------------------------------------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background-color: #fff;
+    color: #555;
+    font-family: "Lato", "Arial", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+}
+/*
+.clearfix {zoom: 1}
+.clearfix {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}*/
+/* ------------------------------------------------------------------------*/
+/* REUSABLE COMPONENTS*/
+/*-------------------------------------------------------------------------*/
+
+.row{
+   /*background-color: rgb(86, 86, 160);*/
+    max-width: 1140px;
+    margin: 0 auto;
+}
+/*row is also efined in grid.css. here only width and center are defined. row perfoms operation similer to clearfix and does not let anything sit beside it. this gives us a structur to build up on. we can also work with coloms the same way.*/
+section{
+    padding: 80px;
+}
+
+.box{
+    padding: 1%;
+    
+}
+/* --------HEADINGS-------- */
+h1,
+h2,
+h3{ 
+    font-weight: 300;
+    text-transform: uppercase;
+   
+}
+
+h1{
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 240%;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+}
+
+h2{
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h3{
+    line-height: 145%;
+    margin-bottom: 15px;
+}
+
+h2:after {
+    display: block;
+    height: 3px;
+    background-color: #e67e22;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+/*----------PARAGRAPHS----------*/
+
+.long-copy{
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.box p{
+    font-size: 80%;
+    line-height: 145%;
+    text-align: justify;
+}
+
+
+/*----------ICONS/ICON-ANIMATION----------*/
+.icon-big{
+    position: relative;
+    display: block;
+    color: #e67e22;
+    font-size: 400%;
+    margin-bottom: 10px;
+    animation-name: bigicon;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;  /*To make a continuous loop, change the animation-iteration-count property to infinite.*/
+    animation-timing-function: ease;/*the animation-timing-function property controls how quickly an animated element changes over the duration of the animation
+    ease: slw start, slw end
+    linear: constant throughout
+    ease-in: slow start, abropt stop
+    ease-out: abrupt start, slow end*/
+    z-index: 2; /* icon-big were visivle over sticly.. not anymore*/
+}
+/*.icon-big:hover {           
+    animation-name: bigicon;
+    animation-duration: 5s;
+    animation-iteration-count: 10;}
+animation will activate when we hover over it*/
+@keyframes bigicon{          /* you can define properties at every % of time.here 0 is begning and 100 is end. it will transition fro 0 t 100 in defined animation-duration: ;*/
+    0%{
+        color: #e67e22;
+        bottom: 0px;
+    }
+    50%{
+        color: #ff0000;
+        bottom: 50px;
+        opacity: 0;      /* will cause the fading in and out*/
+    }
+    100%{
+        color: #e67e22;
+        bottom: 0px;
+    }
+}
+/* The animation-fill-mode specifies the style applied to an element when the animation has finished. You can set it like so:
+animation-fill-mode: forwards;*/
+.icon-small {
+    display: block;
+    color: #e67e22;
+    float: left;
+    zoom: 1.25;
+    margin-right: 5px;
+}
+
+
+/*----------LINKS----------*/
+
+a:link,
+a:visited{
+    color: #e67e22;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #e67e22;
+    
+}
+
+a:hover,
+a:active{
+    color: #555;
+    border-bottom: 1px solid #e67d2231;
+    transition: border-bottom 0.25s, color 0.25s;
+
+}
+
+/*----------BUTTONS----------*/
+.btn:link,
+.btn:visited,
+input[type=button] {              /*class did not work in input so here we are.....maybe because the formating is done considering link and wonnt apply to input[type=submit]*/
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.4s, border 0.4s, color 0.4s;    
+}
+
+.btn:hover,
+.btn:active{
+    background-color: #bf6516;
+}  
+
+.btn-full:link,
+.btn-full:visited,
+input[type=button] {
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: rgb(66, 59, 59);
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+.btn-full:hover,
+.btn-full:active,
+input[type=button]:hover,                 /*need to mention the hover and active aain for input[type=button] for it to work*/
+input[type=button]:active {
+    background-color: #bf6516;
+    border: 1px solid #bf6516;
+    color: #fff;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active{
+    border: 1px solid #bf6516;
+    color: #fff;
+}
+
+/* ------------------------------------------------------------------------*/
+/* HEADER */
+/*-------------------------------------------------------------------------*/
+
+header{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.70),rgba(0, 0, 0, 0.70)), url(/resources/css/images/hero-min.jpg);
+    /*background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));
+    the first argument specifies the direction of transition..0deg meana vertically up and 90deg means left to right..... it can be st to any angle and thee is no limit to the no. of colors we can add*/
+
+    /* background: repeating-linear-gradient(
+      45deg,
+      yellow 0px,
+      yellow 40px,
+      black 40px,
+      black 80px
+    );
+  }
+  https://www.freecodecamp.org/learn/responsive-web-design/applied-visual-design/use-a-css-linear-gradient-to-create-a-striped-element*/
+    background-size: cover ;
+    height: 100vh;
+    background-attachment:fixed;
+}
+
+.hero-text-box{
+    position: absolute;   /*One nuance with absolute positioning is that it will be locked relative to its closest positioned ancestor. If you forget to add a position rule to the parent item, (this is typically done using position: relative;), the browser will keep looking up the chain and ultimately default to the body tag.*/
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}   
+
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+.logo-black {
+    display: none;
+    height: 50px;
+    width: auto;
+    float: left;
+    margin: 5px 0;
+}
+
+.main-nav{
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li{
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.4s;
+    padding: 4px;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active{
+    border-bottom: 2px solid #e67e22;
+}
+/*mobile nav*/
+.mobile-nav-icon{
+    float: right;
+    margin-top: 30px;
+    cursor: pointer; /* if we do not add href to <a> tag then curser will not convert to pointer to override this we can use thia*/
+    display: none;
+}
+
+.mobile-nav-icon ion-icon {
+    font-size: 200%;
+    color: #fff;
+}
+
+/*Sticky nav....will appear fixed on top when we sceoll from first page*/
+
+.sticky {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background-color: hsla(0, 0%, 100%, 0.95);
+    box-shadow: 0px 2px 2px #ececec; /*Acts as a differtiator from rest of the website*/
+    /*box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    this way we can use multiple shadows ant the same time */
+    z-index: 3;/* icon-big were visivle over sticly.. not anymore*/
+}
+.main-nav { margin-top: 18px; }
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited{
+    padding: 16px 0;
+    color: #555;
+    
+}
+
+.sticky .logo{display: none;}
+.sticky .logo-black {display:block;}
+
+
+/* ------------------------------------------------------------------------*/
+/* FEATURES*/
+/*-------------------------------------------------------------------------*/
+
+.section-features .long-copy{
+    margin-bottom: 30px;
+}
+
+/*The Web Content Accessibility Guidelines (WCAG) recommend at least a 4.5 to 1 contrast ratio for normal text. The ratio is calculated by comparing the relative luminance values of two colors. This ranges from 1:1 for the same color, or no contrast, to 21:1 for white against black, the most substantial contrast. There are many contrast checking tools available online that calculate this ratio for you.
+
+*/
+/* ------------------------------------------------------------------------*/
+/* MEALS*/
+/*-------------------------------------------------------------------------*/
+
+.section-meal{
+    padding: 0%;
+}
+
+.section-meal h2{
+    display: none;
+}
+.meal-showcase{
+    list-style: none;
+    width: 100%;
+    display: flow-root
+}
+
+.meal-showcase li{
+    display: block;
+    float: left;
+    width: 25%;
+}
+.meal-photo{
+    width: 100%;
+    margin: 0%;
+    overflow: hidden;
+    background-color: black;
+}
+.meal-photo img{
+    opacity: 70%;
+    width: 100%;
+    height: auto;
+    transform: scale(1.15);
+    transition: transform 0.5s, opacity 0.5s;
+    
+}
+.meal-photo img:hover{
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* ------------------------------------------------------------------------*/
+/* HOW IT WORKS */
+/*-------------------------------------------------------------------------*/
+
+.section-steps {
+    background-color: rgb(233, 233, 233);
+}
+.steps-box:first-child {
+    text-align: right;
+    padding-right: 5%;
+    margin-top: 30px;
+
+}
+
+.steps-box:last-child {
+    padding-left: 2%;
+    margin-top: 70px;
+}
+
+.app-screen {
+    width: 40%;
+}
+.work-steps {
+    margin-bottom: 50px;
+}
+
+.work-steps div{
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    display: block;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    font-size: 150%;
+    padding: 5px;
+    float: left;
+    margin-right: 30px;
+
+}
+
+.btn-app img{
+    height: 50px;
+}
+
+.btn-app:link,
+.btn-app:visited{
+    border: 0;
+}
+
+
+/* ------------------------------------------------------------------------*/
+/* CITIES */
+/*-------------------------------------------------------------------------*/
+
+.box img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+
+.city-features {
+    margin-bottom: 5px;
+    display: flow-root;
+}
+
+/* ------------------------------------------------------------------------*/
+/* Customer Testimonials */
+/*-------------------------------------------------------------------------*/
+
+.customers{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url(/resources/css/images/back-customers-min.jpg);
+    /*background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));*/
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;
+}
+
+.customers p{
+    padding: 2%;
+    font-style: italic;
+    line-height: 145%;
+    position: relative;
+    top: 45px;    /* we could have used margin or padding but didnot.. chainging margin and padding will also affect the boxes surrounding it but by using this way we only change the psition relative to where it would sit in ormal flow but do notiong with actual bx model...... https://www.freecodecamp.org/learn/responsive-web-design/applied-visual-design/change-an-elements-relative-position */
+}
+
+.customers p::before{
+    content:"\201C";
+    font-size: 500%;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    
+}
+cite{
+    font-size: 90%;
+    margin-top: 25px;
+    display: block;
+}
+cite img{
+    height: 50px;
+    border-radius: 50%;
+    vertical-align: middle
+}
+
+
+
+/* ------------------------------------------------------------------------*/
+/* plans */
+/*-------------------------------------------------------------------------*/
+
+.section-plans {
+    background-color: rgb(233, 233, 233);
+}
+
+.plan-box {
+    transition: 2s;
+    background-color: #fff;
+    padding: 5px;
+    width: 90%;
+    margin-left: 5px;
+    box-shadow: 10px 15px 10px #7c7976;
+}
+
+.plan-box:hover{
+    transition: 0.2s;
+    /*transform: rotateZ(360deg) translateX(-10px) skewX(45deg) skewY(45deg); /*skew will turn square into rombas*/
+    border-radius: 10px;
+}
+
+.plan-box div {
+    padding: 15px;
+    border-bottom: 1px solid rgb(247, 247, 247);
+}
+.plan-price {
+    font-size: 300%;
+    font-weight: 100;
+    color: #e67e22;
+}
+
+.plan-box ul {
+    list-style: none;
+}
+
+.plan-box div:first-child {
+    background: #fcfcfc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.plan-box div:last-child{
+    text-align: center;
+}
+.plan-box ul li {
+    display: block;
+    margin-bottom: 4px;
+}
+.plan-price span {
+    font-size: 30%;
+    font-weight: 300;
+}
+.plan-price-meal {
+    font-size: 80%;
+}
+
+
+
+/* ------------------------------------------------------------------------*/
+/* plans */
+/*-------------------------------------------------------------------------*/
+
+.contact-form {
+    /*background-color: rgb(224, 240, 240);*/
+    width: 60%;
+    margin:0 auto; /* to center the block*/
+}
+
+input[type=text],      /*input[type=<>] selects the type of input we want to style here */
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    border-radius: 3px;
+    padding:5px;
+    background-color: rgb(233, 233, 233);
+}
+
+input[type=checkbox] {
+    margin:10px 5px 10px 3px;
+}
+::placeholder {                     /* Style the placeholder*/
+    color: rgb(189, 147, 129);
+                     
+}
+
+*:focus {outline: 0;}                   /* http://www.outlinenone.com/*/   
+/*https://www.freecodecamp.org/learn/responsive-web-design/applied-accessibility/use-tabindex-to-add-keyboard-focus-to-an-element*/
+
+/* ------------------------------------------------------------------------*/
+/* FOOTER */
+/*-------------------------------------------------------------------------*/
+
+footer {
+    background: linear-gradient(rgb(48, 48, 48),rgb(216, 54, 162)); /* insted of a background color, set up a range of colors varieng from color1 to color2*/
+    padding: 10px 0 60px 0;
+    font-size: 80%;
+}
+
+.footer-nav {
+    float: left;
+    list-style: none;
+}
+
+.footer-nav li,
+.social-nav li {
+    display: inline-block;
+    margin-right: 20px;
+    padding-bottom: 20px 0;
+}
+
+.social-nav {
+    float: right;
+    list-style: none;
+}
+.footer-nav:last-child,
+.social-nav:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-nav li a:link,
+.social-nav li a:visited {
+    text-decoration: none;        /* link have a default underline in them...thia removes it*/
+    border: none;
+    color: rgb(180, 180, 180);
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: rgb(228, 8, 209);
+    transition: color 0.2s;
+}
+
+.social-nav li a:link,
+.social-nav li a:visited{
+    font-size: 130%;
+}
+
+
+#i1:hover {     
+    position: relative;
+    bottom: 3px;        
+    transform: scale(2);      /*we used scale insted of zoom because zoom will change the ox model in a way that it will affect the nebaurig boxes also and cause displacement in them but scale wil transform them without affecting others and so will bottom.... bottom/top/left/rignt are offst commands and and do not alter the netural flow but insted isolate that perticular element and reposition*/     
+    transition: color 0.2s, transform 0.5s;
+    color: #55acee;       /* each icon will get thei color when hovering*/
+}
+#i2:hover {
+    position: relative;
+    bottom: 3px;
+    transform: scale(2);  
+    transition: color 0.2s, transform 0.5s;
+    color: #e4405f;
+}
+#i3:hover {
+    position: relative;
+    bottom: 3px;
+    transform: scale(2);  
+    transition: color 0.2s, transform 0.5s;
+    color: #3b5999;
+}
+#i4:hover{
+    position: relative;
+    bottom: 3px;
+    transform: scale(2);  
+    transition: color 0.2s, transform 0.5s;
+    color: #dd4b39;
+}
+
+
+footer p {
+    color: rgb(180, 180, 180);
+    text-align: center;
+}
+
+
+/* ------------------------------------------------------------------------*/
+/* animate */
+/*-------------------------------------------------------------------------*/
+
+.js--wp-1,
+.js--wp-2,
+.js--wp-3{
+    opacity: 0;
+    animation-duration: 1s;
+}
+
+.js--wp-4{
+    animation-duration: 1s;
+}
+
+.js--wp-1.animated,
+.js--wp-2.animated,
+.js--wp-3.animated{
+    opacity: 1;
+}
+
+
+
+
+/* sidenotes */
+/*The four different viewport units are:
+
+vw (viewport width): 10vw would be 10% of the viewport's width.
+vh (viewport height): 3vh would be 3% of the viewport's height.
+vmin (viewport minimum): 70vmin would be 70% of the viewport's smaller dimension (height or width).
+vmax (viewport maximum): 100vmax would be 100% of the viewport's bigger dimension (height or width).
+*/
+
