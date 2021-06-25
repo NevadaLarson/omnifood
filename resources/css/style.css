@@ -450,7 +450,7 @@ header{
 /*-------------------------------------------------------------------------*/
 
 .customers{
-    background-image:linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)),url(resources/css/images/back-customers-min.jpg);
+    background-image:linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)),url(images/back-customers-min.jpg);
     /*background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255));*/
     background-size: cover;
     color: #fff;
