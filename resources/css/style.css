@@ -583,7 +583,7 @@ input[type=checkbox] {
 /*-------------------------------------------------------------------------*/
 
 footer {
-    background: linear-gradient(rgb(48, 48, 48),rgb(216, 54, 162)); /* insted of a background color, set up a range of colors varieng from color1 to color2*/
+    background: rgb(48, 48, 48); /* insted of a background color, set up a range of colors varieng from color1 to color2*/
     padding: 10px 0 60px 0;
     font-size: 80%;
 }
